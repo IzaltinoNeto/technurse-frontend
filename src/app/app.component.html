@@ -1,2 +1,8 @@
-
+<mat-toolbar color="primary" >    
+    <h1 class="example-app-name" ><a  routerLink="/"><img style="vertical-align: middle;" src="../assets/images/technurse_logo1.png" alt="logo"> <span>TechNurse</span> </a></h1>
+    <span class="nav-spacer"></span>
+    <button *ngIf="logado" mat-button routerLink="/perfil">Perfil</button>
+    <button *ngIf="logado" mat-button (click)="logout()">Sair</button>
+    <button *ngIf="!logado" mat-button routerLink="/login">Login</button>
+</mat-toolbar>
 <router-outlet></router-outlet>

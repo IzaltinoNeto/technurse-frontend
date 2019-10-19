@@ -26,8 +26,7 @@ export class AuthenticationService {
     }
 
     getToken() : String{
-        console.log(this.tokenSubject.value.token);
-        return this.tokenSubject.value.token;
+        return this.tokenSubject.value ?  this.tokenSubject.value.token : null;
     }
     registrar(email: string, password: string): Observable<any> {
         return this.http.post<any>(`${environment.defautltUrl}/api/auth/register`, { "email": email, "password": password });
@@ -46,7 +45,7 @@ export class AuthenticationService {
     }
 
     logout(){
-        localStorage.setItem("tokenUser","");
+        localStorage.setItem("tokenUser",null);
         this.tokenSubject.next(null);
     }
 

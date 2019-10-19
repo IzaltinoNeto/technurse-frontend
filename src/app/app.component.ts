@@ -9,16 +9,24 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
     title = 'technurse-frontend';
-
+    logado = false;
     constructor(private authenticationService: AuthenticationService,
         private router: Router) {
         this.authenticationService.token.subscribe(token => {
-            console.log(token);
-            if (token)
+            console.log("Token atual",token);
+            if (token) {
+                this.logado = true;
                 router.navigate(['/']);
-            else
+            }
+            else {
+                this.logado = false;
                 router.navigate(['login']);
+            }
         })
+    }
+
+    logout(){
+        this.authenticationService.logout();
     }
 
 }

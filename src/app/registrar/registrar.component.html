@@ -1,7 +1,11 @@
 <div class="container-card">
     <mat-card class="example-card">
         <mat-card-header style="margin-left:80px">
-            <mat-card-title>TechNurse - Crie sua conta</mat-card-title>
+                <mat-card-title>
+                        <img  src="../../assets/images/technurse_logo.PNG" alt="logo">
+                    </mat-card-title>
+                    <mat-card-subtitle style="color: black; text-align: center; font-weight: bold;">Crie sua conta</mat-card-subtitle>
+                
         </mat-card-header>
         <mat-card-content>
             <form class="example-form" [formGroup]="registerForm" (ngSubmit)="registrar()">
@@ -66,7 +70,7 @@
                     <mat-error *ngIf="!camposConferem()">As senhas não conferem</mat-error>
                 </mat-form-field>
 
-                <div style="text-align:center">
+                <div style="text-align:center;  display: grid;">
                     <button mat-raised-button [disabled]="!registerForm.valid || !camposConferem()"
                         color="primary">Criar conta</button>
 

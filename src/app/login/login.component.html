@@ -1,13 +1,16 @@
 <div class="container-card">
     <mat-card class="example-card">
         <mat-card-header style="margin-left:80px">
-            <mat-card-title>TechNurse - Login</mat-card-title>
+
+            <mat-card-title>
+                <img  src="../../assets/images/technurse_logo.PNG" alt="logo">
+            </mat-card-title>
+            <mat-card-subtitle style="color: black; text-align: center; font-weight: bold;">Login</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
             <form class="example-form" [formGroup]="loginForm" (ngSubmit)="login()">
                 <mat-form-field class="example-full-width">
-                    <input matInput type="email" placeholder="Email" formControlName="email" 
-                         required>
+                    <input matInput type="email" placeholder="Email" formControlName="email" required>
                     <mat-error>Campo obrigatório</mat-error>
                 </mat-form-field>
                 <mat-form-field class="example-full-width">
@@ -15,21 +18,19 @@
                         autocomplete="password" required>
                     <mat-error>Campo obrigatório</mat-error>
                 </mat-form-field>
-                
-                <div style="text-align:center">
+
+                <div style="text-align:center; display: grid;">
                     <button mat-raised-button [disabled]="!loginForm.valid" color="primary">Logar</button>
 
-                    <!-- <div class="loading-shade">
-                        <mat-spinner [style.display]="(logando$ | async) ? 'block' : 'none'"></mat-spinner>
-                    </div> -->
+                    <span style="margin-top: 10px;"><a routerLink="/registrar">Cadastre-se</a></span>
                 </div>
 
-               
+
 
             </form>
 
 
         </mat-card-content>
     </mat-card>
-    
+
 </div>

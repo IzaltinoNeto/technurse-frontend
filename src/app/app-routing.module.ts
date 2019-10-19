@@ -3,6 +3,7 @@ import { LoginComponent } from './login/login.component';
 import { RegistrarComponent } from './registrar/registrar.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { PerfilComponent } from './perfil/perfil.component';
 
 
 const routes: Routes = [
@@ -23,6 +24,10 @@ const routes: Routes = [
     path: 'registrar',
     component: RegistrarComponent
   },
+  {
+    path: 'perfil',
+    component: PerfilComponent
+  }
 ];
 
 @NgModule({

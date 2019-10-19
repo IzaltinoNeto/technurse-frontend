@@ -7,18 +7,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegistrarComponent } from './registrar/registrar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSliderModule, MatCardModule, MatInputModule, MatButtonModule, MatFormFieldModule, MatProgressBarModule, MatCheckboxModule, MatIconModule, MatGridListModule } from '@angular/material';
+import { MatSliderModule, MatCardModule, MatInputModule, MatButtonModule, MatFormFieldModule, MatProgressBarModule, MatCheckboxModule, MatIconModule, MatGridListModule, MatToolbarModule } from '@angular/material';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ProgressBarColor } from './registrar/ProgressBarColor.directive';
 import { AdministracaoComponent } from './administracao/administracao.component';
+
+import { PerfilComponent } from './perfil/perfil.component';
 @NgModule({
   declarations: [
     AppComponent,
     RegistrarComponent,
     ProgressBarColor,
     LoginComponent,
-    AdministracaoComponent
+    AdministracaoComponent,
+  
+    PerfilComponent
   ],
   imports: [
     BrowserModule,
@@ -34,8 +38,9 @@ import { AdministracaoComponent } from './administracao/administracao.component'
     MatProgressBarModule,
     MatCheckboxModule,
     MatIconModule,
-    MatGridListModule
-    
+    MatGridListModule,
+    MatToolbarModule,
+    MatButtonModule
   ],
   providers: [ {
     provide: HTTP_INTERCEPTORS,
