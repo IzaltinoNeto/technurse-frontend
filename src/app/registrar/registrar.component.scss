@@ -1,0 +1,33 @@
+.example-card {
+    margin: 10px;
+}
+
+.container-card {
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+}
+
+.example-full-width {
+    width: 100%;
+}
+
+.loading-shade {
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mat-progress-bar-fill::after{
+    background-color: red;
+}
+
+.mat-icon {
+    font-size: 14px;
+  }
+
+  .mat-progress-bar {
+    border-radius: 20px;
+}
