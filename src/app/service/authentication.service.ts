@@ -9,24 +9,27 @@ import { SubjectSubscriber, Subject } from 'rxjs/internal/Subject';
     providedIn: 'root'
 })
 export class AuthenticationService {
-    
-    token : Observable<any>;
-    tokenSubject : BehaviorSubject<any>;
-    
+
+    token: Observable<any>;
+    tokenSubject: BehaviorSubject<any>;
+
     constructor(private http: HttpClient) {
         this.tokenSubject = new BehaviorSubject<any>(null);
         this.token = this.tokenSubject.asObservable();
         this.estaLogado();
     }
-    estaLogado() {
+    estaLogado(): boolean {
         let token = JSON.parse(localStorage.getItem("tokenUser"));
-        if(token)
+        if (token) {
             this.tokenSubject.next(token);
+            return true;
+        }
+        else return false;
 
     }
 
-    getToken() : String{
-        return this.tokenSubject.value ?  this.tokenSubject.value.token : null;
+    getToken(): String {
+        return this.tokenSubject.value ? this.tokenSubject.value.token : null;
     }
     registrar(email: string, password: string): Observable<any> {
         return this.http.post<any>(`${environment.defautltUrl}/api/auth/register`, { "email": email, "password": password });
@@ -36,7 +39,6 @@ export class AuthenticationService {
         return this.http.post<any>(`${environment.defautltUrl}/api/auth/login`,
             { "email": email, "password": password }).pipe(
                 map((res: any) => {
-                    console.log("usuario logado: ", res);
                     localStorage.setItem("tokenUser", JSON.stringify(res));
                     this.tokenSubject.next(res);
                     return res;
@@ -44,8 +46,8 @@ export class AuthenticationService {
             );
     }
 
-    logout(){
-        localStorage.setItem("tokenUser",null);
+    logout() {
+        localStorage.setItem("tokenUser", null);
         this.tokenSubject.next(null);
     }
 

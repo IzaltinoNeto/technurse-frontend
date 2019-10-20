@@ -1,3 +1,4 @@
+import { AuthGuardService as AuthGuard } from './service/auth-guard.service';
 import { AdministracaoComponent } from './administracao/administracao.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrarComponent } from './registrar/registrar.component';
@@ -15,6 +16,7 @@ const routes: Routes = [
   {
     path: 'administracao',
     component: AdministracaoComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'login',
@@ -26,12 +28,14 @@ const routes: Routes = [
   },
   {
     path: 'perfil',
-    component: PerfilComponent
+    component: PerfilComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers:[AuthGuard]
 })
 export class AppRoutingModule { }

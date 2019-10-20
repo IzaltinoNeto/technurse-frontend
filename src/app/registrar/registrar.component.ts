@@ -13,7 +13,7 @@ import { MatProgressBar } from '@angular/material';
 export class RegistrarComponent implements OnInit {
   registerForm: FormGroup;
   passwordErrors: any;
-  
+  cadastrado : boolean = false;
   progressColor: String[] = ['gray', 'gray', 'gray'];
 
 
@@ -59,8 +59,7 @@ export class RegistrarComponent implements OnInit {
     let email = this.registerForm.value.email;
     let password = this.registerForm.value.password;
     this.authenticationService.registrar(email, password).subscribe((data) => {
-      console.log("Registrado: ", data);
-      alert("Usuário registrado com sucesso")
+      this.cadastrado = true;
     })
   }
 

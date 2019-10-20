@@ -13,7 +13,6 @@ export class AppComponent {
     constructor(private authenticationService: AuthenticationService,
         private router: Router) {
         this.authenticationService.token.subscribe(token => {
-            console.log("Token atual",token);
             if (token) {
                 this.logado = true;
                 router.navigate(['/']);

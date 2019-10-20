@@ -16,7 +16,6 @@ export class AdministracaoComponent implements OnInit {
 
   buscarNurses(){
     this.nursesService.getNurse().subscribe(res=>{
-      console.log("nurses: ",res.nurses);
       this.nurses = res.nurses;
     })
   }

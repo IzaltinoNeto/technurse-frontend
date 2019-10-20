@@ -1,13 +1,15 @@
 <div class="container-card">
     <mat-card class="example-card">
         <mat-card-header style="margin-left:80px">
-                <mat-card-title>
-                        <img  src="../../assets/images/technurse_logo.PNG" alt="logo">
-                    </mat-card-title>
-                    <mat-card-subtitle style="color: black; text-align: center; font-weight: bold;">Crie sua conta</mat-card-subtitle>
-                
+            <mat-card-title>
+                <img src="../../assets/images/technurse_logo.PNG" alt="logo">
+            </mat-card-title>
+            <mat-card-subtitle *ngIf="!cadastrado" style="color: black; text-align: center; font-weight: bold;">
+                Crie sua conta
+            </mat-card-subtitle>
+
         </mat-card-header>
-        <mat-card-content>
+        <mat-card-content *ngIf="!cadastrado">
             <form class="example-form" [formGroup]="registerForm" (ngSubmit)="registrar()">
                 <mat-form-field class="example-full-width">
                     <input matInput type="email" placeholder="Email" formControlName="email" required>
@@ -16,11 +18,10 @@
                 <mat-form-field class="example-full-width">
                     <input (keyup)="calcularProgressBar()" matInput placeholder="senha" type="password"
                         formControlName="password" autocomplete="password" required>
-                    <mat-hint align="start"  style="top: 0%; margin-top: 0; width: 100%;">
-                       
+                    <mat-hint align="start" style="top: 0%; margin-top: 0; width: 100%;">
+
                         <mat-grid-list cols="3" rowHeight="10px">
                             <mat-grid-tile>
-
                                 <mat-progress-bar [mode]="determinate" [appProgressBarColor]="progressColor[0]"
                                     value="100">
                                 </mat-progress-bar>
@@ -39,7 +40,6 @@
                         </mat-grid-list>
 
                     </mat-hint>
-
                 </mat-form-field>
 
                 <div style="display: block;">
@@ -50,7 +50,7 @@
 
                     </span>
                     <span style="display: block;">
-                        <mat-icon *ngIf="!passwordErrors?.leastOneUpperCaseLetter"  color="primary">done</mat-icon>
+                        <mat-icon *ngIf="!passwordErrors?.leastOneUpperCaseLetter" color="primary">done</mat-icon>
                         <mat-icon *ngIf="passwordErrors?.leastOneUpperCaseLetter" color="warn">clear</mat-icon>
                         <span style="vertical-align: top;  color: gray;">Pelo menos 1 letra maiúscula</span>
 
@@ -62,7 +62,6 @@
                         <span style="vertical-align: top; color: gray;">Pelo menos 1 número</span>
                     </span>
                 </div>
-
 
                 <mat-form-field class="example-full-width">
                     <input matInput placeholder="Confirme sua senha" type="password" formControlName="confirmarPassword"
@@ -79,10 +78,17 @@
                     </div> -->
                 </div>
 
-
-
             </form>
 
+        </mat-card-content>
+        <mat-card-content *ngIf="cadastrado" >
+            <span style="padding: 10px; display: block; text-align: -webkit-center;">
+                <mat-icon color="primary" style="font-size: 50px !important; width: 100%;">check_circle_outline
+                </mat-icon>
+                <div><strong>Tudo certo</strong></div>
+                <div style="width: 60%;">Verifique sua caixa de entrada para confirmar seu email.</div>
+                <a routerLink="/login">Login</a>
+            </span>
 
         </mat-card-content>
     </mat-card>
