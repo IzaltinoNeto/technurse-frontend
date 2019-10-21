@@ -70,8 +70,11 @@
                 </mat-form-field>
 
                 <div style="text-align:center;  display: grid;">
-                    <button mat-raised-button [disabled]="!registerForm.valid || !camposConferem()"
-                        color="primary">Criar conta</button>
+                    <button mat-raised-button [disabled]="!registerForm.valid || !camposConferem()" color="primary">
+                        <span *ngIf="!carregando" >Criar conta</span>
+                        <mat-progress-bar *ngIf="carregando" mode="buffer" style="width: 30px;">
+                        </mat-progress-bar>
+                    </button>
 
                     <!-- <div class="loading-shade">
                         <mat-spinner [style.display]="(logando$ | async) ? 'block' : 'none'"></mat-spinner>
@@ -81,7 +84,7 @@
             </form>
 
         </mat-card-content>
-        <mat-card-content *ngIf="cadastrado" >
+        <mat-card-content *ngIf="cadastrado">
             <span style="padding: 10px; display: block; text-align: -webkit-center;">
                 <mat-icon color="primary" style="font-size: 50px !important; width: 100%;">check_circle_outline
                 </mat-icon>

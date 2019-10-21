@@ -11,6 +11,7 @@ import { MatSnackBar } from '@angular/material';
 })
 export class LoginComponent implements OnInit {
   loginForm : FormGroup;
+  carregando : boolean = false;
   constructor(private authenticationService : AuthenticationService,
     public matSnackBar: MatSnackBar ) { 
       this.loginForm =  new FormBuilder().group({
@@ -26,7 +27,9 @@ export class LoginComponent implements OnInit {
   login(){
     let email = this.loginForm.value.email;
     let password = this.loginForm.value.password;
+    this.carregando = true;
     this.authenticationService.login(email,password).subscribe((data)=>{
+      this.carregando = false;
       this.abrirSnackBar("Usuário Logado!",null, "green-snackbar")        
         
     })

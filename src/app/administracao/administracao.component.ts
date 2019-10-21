@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdministracaoComponent implements OnInit {
   nurses : any[] = [];
+  displayedColumns: string[] = ['name', 'local'];
+
   constructor(private nursesService : NursesService) { }
 
   ngOnInit() {

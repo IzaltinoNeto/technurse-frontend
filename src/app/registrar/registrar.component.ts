@@ -15,7 +15,7 @@ export class RegistrarComponent implements OnInit {
   passwordErrors: any;
   cadastrado : boolean = false;
   progressColor: String[] = ['gray', 'gray', 'gray'];
-
+  carregando : boolean = false;
 
   @ViewChild(MatProgressBar, { static: true }) progressBar: MatProgressBar;
   constructor(private authenticationService: AuthenticationService,
@@ -58,8 +58,11 @@ export class RegistrarComponent implements OnInit {
   registrar() {
     let email = this.registerForm.value.email;
     let password = this.registerForm.value.password;
+    this.carregando = true;
     this.authenticationService.registrar(email, password).subscribe((data) => {
+      this.carregando = false;
       this.cadastrado = true;
+      
     })
   }
 
